@@ -17,7 +17,7 @@ export default function UpComigList({movies} : Props){
 
     return(
         <View>
-            <MovieHorizontalList title="Próximamente" movie={movies}/>
+            <MovieHorizontalList title="Próximamente" movies={movies}/>
         </View>
     );
 }

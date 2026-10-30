@@ -13,7 +13,7 @@ export default function TopRatedList({movies}: Props){
 
     return(
         <View>
-            <MovieHorizontalList title="Mejores Calificadas" movie={movies}/>
+            <MovieHorizontalList title="Mejores Calificadas" movies={movies}/>
         </View>
     );
 }
