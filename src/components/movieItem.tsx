@@ -1,16 +1,17 @@
-import { Image, Pressable, StyleSheet, Text, View } from "react-native";
+import { Image, Pressable,
+  PressableProps, StyleSheet, Text, View } from "react-native";
 import { Imovie } from "../../infraestructure/interface/Imovie";
 
 
-interface Props{
+interface Props extends PressableProps{
     item : Imovie ,
     carouselWidth ?: number,
     carouselHeight?: number,
 }
 
-const MovieItem = ({item, carouselWidth, carouselHeight} : Props)=> {
+const MovieItem = ({item, carouselWidth, carouselHeight, onPress} : Props)=> {
     return(
-        <Pressable style={[styles.slide, { width: 150, height: 230, marginLeft:15, paddingHorizontal:5, paddingVertical: 2}]}>
+        <Pressable onPress={onPress}  style={[styles.slide, { width: 150, height: 230, marginLeft:15, paddingHorizontal:5, paddingVertical: 2}]}>
             <Image
             source={{ uri: `${item.poster}` }}
             style={[styles.poster, {maxHeight: '100%',display:'flex',marginRight:0, alignItems: 'center', justifyContent:'center', aspectRatio:0.7, }]}

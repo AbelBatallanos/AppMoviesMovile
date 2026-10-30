@@ -2,6 +2,7 @@ import { ActivityIndicator, FlatList, Text, View } from "react-native";
 import { Imovie } from "../../infraestructure/interface/Imovie";
 import MovieItem from "./movieItem";
 import { useMovies } from "@/hooks/useMovie";
+import { router } from "expo-router";
 
 
 
@@ -9,6 +10,7 @@ interface Props{
     movies : Imovie[],
     title ?: string,
     ListInfinite ? : boolean,
+
 }
 
 
@@ -43,6 +45,15 @@ export default function MovieHorizontalList({title,movies, ListInfinite=false} :
     }
   };
 
+  const handlePressMovie = (movie: Imovie) => {
+    router.push({
+      pathname: `./movie/${movie}`, 
+      params: { 
+        
+        movieData: JSON.stringify(movie) 
+      } 
+    });
+  };
 
   return (
     <View style={{ height: 290, marginTop: 10 }}>
@@ -59,12 +70,13 @@ export default function MovieHorizontalList({title,movies, ListInfinite=false} :
         <FlatList
           horizontal
           data={listData}
-          renderItem={({ item }) => <MovieItem item={item} />}
-          keyExtractor={(item) => `${item.id} ${item.title}`}
+          renderItem={({ item }) => <MovieItem onPress={()=> handlePressMovie(item)} item={item} />}
+          keyExtractor={(item,index) => `${item.id}-${index}`}
           showsHorizontalScrollIndicator={true}
           
           // Props para el Scroll Infinito
           onEndReached={loadMore}
+          
           onEndReachedThreshold={0.5}
           
           // Footer con el indicador de carga
