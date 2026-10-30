@@ -3,11 +3,10 @@ import { nowPayingMovie } from "../../core/actions/now-playing"
 import { Popular } from "../../core/actions/popular"
 import { UpComing } from "../../core/actions/upcoming"
 import { topRated } from "../../core/actions/top-rated"
-
+import detailMovieRequest from "../../core/actions/details-movie"
 
 
 export const useMovies = () => {
-
     const nowPlayingQuery = useQuery({ 
         queryKey: ['movies', 'nowPlaying'],
         queryFn: nowPayingMovie,
@@ -48,12 +47,27 @@ export const useMovies = () => {
         },
         staleTime: 1000 * 60 * 60 * 24,
      });
+
+
+
+
     return{
         nowPlayingQuery,
         popularyQuery,
         upcomingQuery,
         topRatedQuery,
-        popularInfiniteQuery
+        popularInfiniteQuery,
+
     }
 
 }
+
+
+export const useMovieDetails = (idMovie: number) => {
+    return useQuery({
+        queryKey: ['detailsMovie', idMovie],
+        queryFn: () => detailMovieRequest(idMovie),
+        enabled: Number.isFinite(idMovie),
+        staleTime: 1000 * 60 * 5,
+    });
+};

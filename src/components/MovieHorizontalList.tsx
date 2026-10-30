@@ -45,12 +45,12 @@ export default function MovieHorizontalList({title,movies, ListInfinite=false} :
     }
   };
 
-  const handlePressMovie = (movie: Imovie) => {
+  const handlePressMovie = (movieId: Imovie['id']) => {
     router.push({
-      pathname: `./movie/${movie}`, 
+      pathname: `./movie/${movieId}`, 
       params: { 
         
-        movieData: JSON.stringify(movie) 
+        movieID: JSON.stringify(movieId) 
       } 
     });
   };
@@ -70,7 +70,7 @@ export default function MovieHorizontalList({title,movies, ListInfinite=false} :
         <FlatList
           horizontal
           data={listData}
-          renderItem={({ item }) => <MovieItem onPress={()=> handlePressMovie(item)} item={item} />}
+          renderItem={({ item }) => <MovieItem onPress={()=> handlePressMovie(item.id)} item={item} />}
           keyExtractor={(item,index) => `${item.id}-${index}`}
           showsHorizontalScrollIndicator={true}
           
