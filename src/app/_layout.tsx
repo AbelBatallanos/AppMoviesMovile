@@ -13,7 +13,9 @@ export default function RootLayout(){
 
     return(
         <QueryClientProvider client={queryClient}>
-            <Stack screenOptions={{headerShown: false}}/>
+            <Stack screenOptions={{headerShown: true}}>
+
+            </Stack>
         </QueryClientProvider>
     );
 }
