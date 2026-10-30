@@ -30,7 +30,7 @@ const HomeScreen = ()=> {
                         <MainSlideShow movies={nowPlayingQuery.data?.results??[]}></MainSlideShow>
                 </View>
                 <View>
-                    <MovieHorizontalList title="Popular" movie={popularyQuery.data?.results??[]}/>
+                    <MovieHorizontalList title="Popular" ListInfinite={true} movies={popularyQuery.data?.results??[]} />
                 </View>
                 <UpComigList movies={upcomingQuery.data?.results ?? []}/>
                 <TopRatedList movies={topRatedQuery.data?.results ?? []}/>

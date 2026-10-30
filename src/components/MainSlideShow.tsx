@@ -78,7 +78,7 @@ export default function MainSlideShow({ movies, width: externalWidth }: Props) {
         // 🎯 Ajuste de alineación al soltar el gesto
         snapMode="page"
         // 🎨 Animación de transición (timing con duración personalizada)
-        animation={{ type: 'timing', duration: 700 }}
+        animation={{ type: 'timing', duration: 200 }}
         // 📊 Callback opcional para saber qué índice está visible
         onSnapToItem={(index) => {
           // Aquí puedes actualizar un estado para paginación externa
