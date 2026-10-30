@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@expo/material-symbols':
+        specifier: ^0.1.1
+        version: 0.1.1
       '@expo/ui':
         specifier: ~57.0.26
         version: 57.0.26(@babel/core@7.29.7(supports-color@8.1.1))(@types/react@19.2.18)(expo@57.0.31)(react-dom@19.2.3(react@19.2.3))(react-native-worklets@0.10.1(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(react-native@0.86.3(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)(supports-color@8.1.1))(react-native@0.86.3(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
+      '@expo/vector-icons':
+        specifier: ^15.1.1
+        version: 15.1.1(expo-font@57.0.4)(react-native@0.86.3(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
       '@tanstack/react-query':
         specifier: ^4.44.0
         version: 4.44.0(react-dom@19.2.3(react@19.2.3))(react-native@0.86.3(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
@@ -578,6 +584,10 @@ packages:
       react: '*'
       react-native: '*'
 
+  '@expo/material-symbols@0.1.1':
+    resolution: {integrity: sha512-ruA6hZATOPKxo1qSd1NE3HI9FrmEDwcMDhsvzTAdMkP9AapdHfJ/0tKmBMWFJir85voxs1twYxLVrGW9OLGaOg==}
+    hasBin: true
+
   '@expo/metro-config@57.0.13':
     resolution: {integrity: sha512-r+YCwqh8FM5cymkC3MdYO32DqLZQ2wDWkGEnzwgwI40Bj355BvL4XoY0hGgao9vNHjYa7be7XxbVqtMTi76snw==}
     peerDependencies:
@@ -676,6 +686,13 @@ packages:
         optional: true
       react-native-worklets:
         optional: true
+
+  '@expo/vector-icons@15.1.1':
+    resolution: {integrity: sha512-Iu2VkcoI5vygbtYngm7jb4ifxElNVXQYdDrYkT7UCEIiKLeWnQY0wf2ZhHZ+Wro6Sc5TaumpKUOqDRpLi5rkvw==}
+    peerDependencies:
+      expo-font: '>=14.0.4'
+      react: '*'
+      react-native: '*'
 
   '@expo/ws-tunnel@2.0.1':
     resolution: {integrity: sha512-mljsRffbOHzmSimYQbQu9h9NR3alwCCwEEouRGFL4QRTt8dNvsNtKEPa/5jHmtDLDtsh4xXsWKwzjN9BTpeXHQ==}
@@ -3782,6 +3799,8 @@ snapshots:
       react-native: 0.86.3(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1)
       stacktrace-parser: 0.1.11
 
+  '@expo/material-symbols@0.1.1': {}
+
   '@expo/metro-config@57.0.13(expo@57.0.31)(supports-color@8.1.1)(typescript@6.0.3)':
     dependencies:
       '@babel/code-frame': 7.29.7
@@ -3943,6 +3962,12 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
+
+  '@expo/vector-icons@15.1.1(expo-font@57.0.4)(react-native@0.86.3(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)':
+    dependencies:
+      expo-font: 57.0.4(expo@57.0.31)(react-native@0.86.3(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1))(react@19.2.3)
+      react: 19.2.3
+      react-native: 0.86.3(@babel/core@7.29.7(supports-color@8.1.1))(@react-native/metro-config@0.88.0(@babel/core@7.29.7(supports-color@8.1.1))(supports-color@8.1.1))(@types/react@19.2.18)(react@19.2.3)(supports-color@8.1.1)
 
   '@expo/ws-tunnel@2.0.1(ws@8.22.0)':
     dependencies:

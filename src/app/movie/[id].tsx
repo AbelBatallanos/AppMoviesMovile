@@ -3,68 +3,71 @@ import { Image, ScrollView, StyleSheet, Text, View, useWindowDimensions } from "
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import { Imovie } from "../../../infraestructure/interface/Imovie";
+import { useMovieDetails } from "@/hooks/useMovie";
 
 export default function MovieId() {
   const insets = useSafeAreaInsets();
   const { height: screenHeight } = useWindowDimensions(); // 📱 Obtenemos la altura de la pantalla
-  const { movieData } = useLocalSearchParams();
-  
-  const movie: Imovie | null = movieData ? JSON.parse(movieData as string) : null; 
+  const { movieID } = useLocalSearchParams();
 
-  if (!movie) {
-    return (
-      <View style={styles.errorContainer}>
-        <Text style={styles.errorText}>Película no encontrada</Text>
-      </View>
-    );
-  }
+  const detailsMovie = useMovieDetails(Number(movieID))
+    console.log(detailsMovie.data)
+//   const movie: Imovie | null = movieID ? JSON.parse(movieID as string) : null; 
 
-  return (
-    <View style={styles.container}>
-      {/* Configuración del Header Transparente */}
-      <Stack.Screen 
-        options={{ 
-          headerTransparent: true, 
-          headerShadowVisible: false, 
-          headerTitle: '', 
-          headerTintColor: '#fff', // Color blanco para que se vea sobre la imagen
-        }} 
-      />
+//   if (!movie) {
+//     return (
+//       <View style={styles.errorContainer}>
+//         <Text style={styles.errorText}>Película no encontrada</Text>
+//       </View>
+//     );
+//   }
 
-      <ScrollView 
-        showsVerticalScrollIndicator={false} 
-        contentContainerStyle={{ paddingBottom: insets.bottom + 40 }}
-      >
-        {/* Contenedor de la Imagen - 60% de la pantalla */}
-        <View style={{ width: '100%', height: screenHeight * 0.9 }}>
-          <Image 
-            source={{ uri: movie.poster }} 
-            resizeMode="cover" // Usamos cover para que llene el ancho, pero el gradiente ocultará el recorte
-            style={styles.image} 
-          />
+//   return (
+//     <View style={styles.container}>
+//       {/* Configuración del Header Transparente */}
+//       <Stack.Screen 
+//         options={{ 
+//           headerTransparent: true, 
+//           headerShadowVisible: false, 
+//           headerTitle: '', 
+//           headerTintColor: '#7A306C', // Color blanco para que se vea sobre la imagen
+//         }} 
+//       />
+
+//       <ScrollView 
+//         showsVerticalScrollIndicator={false} 
+//         contentContainerStyle={{ paddingBottom: insets.bottom + 10 }}
+//       >
+//         {/* Contenedor de la Imagen - 60% de la pantalla */}
+//         <View style={{ width: '100%', height: screenHeight * 0.9 }}>
+//           <Image 
+//             source={{ uri: movie.poster }} 
+//             resizeMode="cover" // Usamos cover para que llene el ancho, pero el gradiente ocultará el recorte
+//             style={styles.image} 
+//           />
           
-          {/* Degradado para fusionar la imagen con el fondo negro */}
-          <LinearGradient
-            colors={['transparent', '#000000']}
-            style={styles.gradient}
-          />
-        </View>
+//           {/* Degradado para fusionar la imagen con el fondo negro */}
+//           <LinearGradient
+//             colors={['transparent', '#000000']}
+//             style={styles.gradient}
+//           />
+//         </View>
 
-        {/* Contenido de la Película */}
-        <View style={styles.contentContainer}>
-          <Text style={styles.title}>{movie.title}</Text>
+//         {/* Contenido de la Película */}
+//         <View style={styles.contentContainer}>
+//           <Text style={styles.title}>{movie.title}</Text>
           
-          <View style={styles.metaData}>
-            <Text style={styles.metaText}>⭐ {movie.rating}</Text>
-            <Text style={styles.metaText}>📅 {new Date(movie.releaseDate).toDateString()}</Text>
-          </View>
+//           <View style={styles.metaData}>
+//             <Text style={styles.metaText}>⭐ {movie.rating}</Text>
+//             <Text style={styles.metaText}>📅 {new Date(movie.releaseDate).toDateString()}</Text>
+//           </View>
 
-          <Text style={styles.sectionTitle}>Sinopsis</Text>
-          <Text style={styles.overview}>{movie.overview}</Text>
-        </View>
-      </ScrollView>
-    </View>
-  );
+//           <Text style={styles.sectionTitle}>Sinopsis</Text>
+//           <Text style={styles.overview}>{movie.overview}</Text>
+//         </View>
+//       </ScrollView>
+//     </View>
+//   );
 }
 
 const styles = StyleSheet.create({
