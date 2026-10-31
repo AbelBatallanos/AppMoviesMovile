@@ -18,7 +18,8 @@ export interface ImovieCompleteDetailsResponse {
     vote_average: Float,
     budget: number
     vote_count: number,
-    tagline: string
+    tagline: string,
+    title: string,
 } 
 
 
@@ -32,4 +33,19 @@ interface IproductionCompanies {
     logo_path : string,
     name: string,
     origin_country: string
+}
+
+
+export interface ICredistCast {
+    id: number,
+    cast: ICast[]
+}
+
+export interface ICast {
+    id: number,
+    name: string,
+    known_for_department: string,
+    profile_path: string,
+    character: string,
+    popularity: Float
 }

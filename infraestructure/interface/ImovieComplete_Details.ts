@@ -19,6 +19,7 @@ export interface ImovieComplete_Details {
     resumen: string,
     eslogan?: string,
     poster: string,
+    titulo: string,
     companiasProducciones: ICompanias[]
 }
 
@@ -32,4 +33,19 @@ interface ICompanias{
     logo: string,
     nombre: string,
     paisOrigen: string
+}
+
+
+export interface ICreditostCast {
+    id: number,
+    cast: ICasting[]
+}
+
+export interface ICasting {
+    id: number,
+    nombre: string,
+    departamento: string,
+    perfilImage: string,
+    personaje: string,
+    popularidad: Float
 }

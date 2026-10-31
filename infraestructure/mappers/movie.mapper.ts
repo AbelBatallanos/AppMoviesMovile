@@ -1,6 +1,6 @@
 import { Imovie } from "../interface/Imovie";
-import { ImovieComplete_Details } from "../interface/ImovieComplete_Details";
-import { ImovieCompleteDetailsResponse } from "../interface/ImovieComplete_Details_Response";
+import { ICreditostCast, ImovieComplete_Details } from "../interface/ImovieComplete_Details";
+import { ICredistCast, ImovieCompleteDetailsResponse } from "../interface/ImovieComplete_Details_Response";
 import { Results } from "../interface/ImovieList_response";
 
 
@@ -20,6 +20,7 @@ export class MovieMapper{
         }
     } 
     static fromTheMovieToDetailsMovie(m: ImovieCompleteDetailsResponse): ImovieComplete_Details{
+        console.log('HOLAA')
         return{
             adulto: m.adult,
             companiasProducciones: m.production_companies.map(mv => 
@@ -39,7 +40,23 @@ export class MovieMapper{
             resumen: m.overview,
             totalVotos: m.vote_count,
             id: m.id,
+            titulo: m.title,
             eslogan: m.tagline
+        }
+    }
+    static fromDetailtsMovieToCast(credist: ICredistCast): ICreditostCast{
+        return{
+            id: credist.id,
+            cast: credist.cast.map(c => 
+                ({id: c.id, 
+                    nombre: c.name,
+                    departamento: c.known_for_department,
+                    personaje: c.character,
+                    perfilImage: c.profile_path ? 
+                        `https://image.tmdb.org/t/p/w500${c.profile_path}` 
+                        : 'https://via.placeholder.com/150?text=No+Photo',
+                    popularidad: c.popularity
+                }))
         }
     }
 }
