@@ -20,6 +20,7 @@ export class MovieMapper{
         }
     } 
     static fromTheMovieToDetailsMovie(m: ImovieCompleteDetailsResponse): ImovieComplete_Details{
+        console.log('HOLAA')
         return{
             adulto: m.adult,
             companiasProducciones: m.production_companies.map(mv => 
@@ -39,6 +40,7 @@ export class MovieMapper{
             resumen: m.overview,
             totalVotos: m.vote_count,
             id: m.id,
+            titulo: m.title,
             eslogan: m.tagline
         }
     }

@@ -19,6 +19,7 @@ export interface ImovieComplete_Details {
     resumen: string,
     eslogan?: string,
     poster: string,
+    titulo: string,
     companiasProducciones: ICompanias[]
 }
 

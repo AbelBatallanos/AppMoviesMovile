@@ -9,7 +9,6 @@ const detailMovieRequest = async(id : number)=>{
     const {data} = await api_clientMovie.get<ImovieCompleteDetailsResponse>(`/${id}`);
     
     const mapper =  MovieMapper.fromTheMovieToDetailsMovie(data);
-    console.log(mapper)
 
     return mapper;
 } 

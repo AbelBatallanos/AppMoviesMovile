@@ -18,7 +18,8 @@ export interface ImovieCompleteDetailsResponse {
     vote_average: Float,
     budget: number
     vote_count: number,
-    tagline: string
+    tagline: string,
+    title: string,
 } 
 
 
