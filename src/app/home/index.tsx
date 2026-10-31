@@ -2,7 +2,7 @@ import MainSlideShow from "@/components/MainSlideShow";
 import { useMovies } from "@/hooks/useMovie";
 import { ActivityIndicator, ScrollView, Text, View } from "react-native"
 
-import {SafeAreaInsetsContext, SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context'
+import { SafeAreaView, useSafeAreaInsets} from 'react-native-safe-area-context'
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import MovieHorizontalList from "@/components/MovieHorizontalList";
 import UpComigList from "@/components/UpComingList";
@@ -22,10 +22,10 @@ const HomeScreen = ()=> {
     }
 
     return (
-        <SafeAreaView >
-            <ScrollView >
+        <SafeAreaView style={{paddingTop: -safeArea.top }}>
+            <ScrollView style={{paddingTop: -10}}>
             <GestureHandlerRootView >
-                <View style={{ paddingRight:10, paddingTop: safeArea.top }}>
+                <View style={{ paddingRight:15, paddingTop: safeArea.top }}>
                     {/* <Text>HOME</Text> */}
                         <MainSlideShow movies={nowPlayingQuery.data?.results??[]}></MainSlideShow>
                 </View>

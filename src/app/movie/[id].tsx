@@ -3,12 +3,16 @@ import { FlatList, Image, ScrollView, StyleSheet, Text, View, useWindowDimension
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { LinearGradient } from "expo-linear-gradient";
 import { Imovie } from "../../../infraestructure/interface/Imovie";
-import { useMovieDetails } from "@/hooks/useMovie";
+import { useCastMovie, useMovieDetails } from "@/hooks/useMovie";
 
-import { LayoutAnimation, Platform, UIManager } from 'react-native';
+import { Platform, UIManager } from 'react-native';
 import Accordion from "@/components/shared/Accordion";
 import { FormatDurationMovie } from "@/hekper/formatDurationMovie";
 import { Ionicons } from "@expo/vector-icons";
+import CompaniesMovie from "@/components/shared/CompaniesMovie";
+import { CreditsCast } from "../../../core/actions/credits-cast";
+import CardCast from "@/components/shared/CardCast";
+
 
 // Habilitar LayoutAnimation en Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -25,8 +29,10 @@ export default function MovieId() {
   const movie = data;
   const companias = movie?.companiasProducciones;
   const generos = movie?.generos;
-  console.log(movie)
-
+  // CreditsCast(movie?.id!);
+  const {data : cast} = useCastMovie(movie?.id!);
+  // console.log(credist)
+  
   if (!movie) {
     return (
       <View style={styles.errorContainer}>
@@ -85,55 +91,21 @@ export default function MovieId() {
           </View>
           <View style={{flexDirection: 'column', marginBottom: 15}}>
             <Text style={{color:'#F4EDED', fontSize: 18, marginBottom: 8}}>Generos :</Text>
-            <FlatList
-              data={generos}
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{gap:10}}
-              keyExtractor={(item, index)=> `${item.id}-${index}`}
-              renderItem={({item})=> (
-                <View>
-                    <Text style={[styles.cardTitle, {fontSize: 14,color: '#C2D076'}]}>{item.nombre}</Text>
-                </View>
-              )}
-            />
+            <Text style={{...styles.cardTitle, fontSize: 14,color: '#C2D076'}}>{generos?.map(i=> i.nombre).join(' - ')}</Text>
           </View>
+
           <Text style={styles.sectionTitle}>Sinopsis</Text>
           <Text style={styles.overview}>{movie.resumen}</Text>
           
           <View style={{ marginTop: 20 }}>
             
             {/* ACORDEÓN */}
-            <Accordion title="Información Adicional">
-              <Text style={styles.accordionText}>
-                Aquí puedes colocar cualquier información extra de la película, 
-                como el presupuesto, los ingresos en taquilla, o datos curiosos 
-                del rodaje. Este es el contenido del primer acordeón.
-              </Text>
+            <Accordion title="Casts">
+              <CardCast cast={cast?.cast!}/>
             </Accordion>
 
             {/* ACORDEÓN 2: Lista Horizontal */}
-            <Accordion title="Compañías Productoras">
-              <FlatList
-                horizontal
-                data={companias} // Cambia esto por los datos reales de tu API (ej. movie.production_companies)
-                keyExtractor={(item, index) => `${item.id}-${index}`}
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{ paddingVertical: 5, paddingRight: 20 }}
-                renderItem={({ item }) => (
-                  <View style={styles.cardItem}>
-                    <Image
-                    style={{width:'100%', height: '60%'}}
-                     resizeMode="contain"  
-                    source={{uri: `${item.logo}`}}
-                    />
-                    <Text style={styles.cardTitle}>{item.nombre}</Text>
-                    <Text style={styles.cardCountry}>🌍 {item.paisOrigen}</Text>
-                  </View>
-                )}
-              />
-            </Accordion>
-
+            <CompaniesMovie companies={companias!}/>
           </View>
         </View>
       </ScrollView>

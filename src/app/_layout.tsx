@@ -29,7 +29,7 @@ export default function RootLayout(){
                         <Ionicons name="arrow-back-circle" size={35} color="#69B3C8" />
                     </Pressable>) }}
                     }} >
-
+                <Stack.Screen name='home' options={{title: 'Home' }}/>
             </Stack>
         </QueryClientProvider>
     );

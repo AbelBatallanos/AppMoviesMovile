@@ -95,8 +95,8 @@ const styles = StyleSheet.create({
   // --- ESTILOS DEL ACORDEÓN ---
   accordionContainer: {
     marginBottom: 15,
-    backgroundColor: '#04395E', // Un gris muy oscuro para que resalte sobre el negro
-    borderRadius: 12,
+    backgroundColor: '#266967', // Un gris muy oscuro para que resalte sobre el negro
+    borderRadius: 15,
     overflow: 'hidden',
   },
   accordionHeader: {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
   accordionContent: {
     paddingHorizontal: 5,
-    paddingBottom: 50,
+    paddingBottom: 20,
   },
   accordionText: {
     color: '#d1d1d1',

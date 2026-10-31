@@ -34,3 +34,18 @@ interface IproductionCompanies {
     name: string,
     origin_country: string
 }
+
+
+export interface ICredistCast {
+    id: number,
+    cast: ICast[]
+}
+
+export interface ICast {
+    id: number,
+    name: string,
+    known_for_department: string,
+    profile_path: string,
+    character: string,
+    popularity: Float
+}

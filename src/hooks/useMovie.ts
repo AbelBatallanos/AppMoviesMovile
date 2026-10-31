@@ -4,6 +4,7 @@ import { Popular } from "../../core/actions/popular"
 import { UpComing } from "../../core/actions/upcoming"
 import { topRated } from "../../core/actions/top-rated"
 import detailMovieRequest from "../../core/actions/details-movie"
+import { CreditsCast } from "../../core/actions/credits-cast"
 
 
 export const useMovies = () => {
@@ -71,3 +72,12 @@ export const useMovieDetails = (idMovie: number) => {
         staleTime: 1000 * 60 * 5,
     });
 };
+
+export const useCastMovie = (idMovie: number)=> {
+    return useQuery({
+        queryKey: ['CastsMovie', idMovie],
+        queryFn: ()=> CreditsCast(idMovie),
+        enabled: Number.isFinite(idMovie) && idMovie > 0,
+        staleTime: 1000 * 60 * 5
+    })
+}

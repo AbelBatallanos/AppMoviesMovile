@@ -34,3 +34,18 @@ interface ICompanias{
     nombre: string,
     paisOrigen: string
 }
+
+
+export interface ICreditostCast {
+    id: number,
+    cast: ICasting[]
+}
+
+export interface ICasting {
+    id: number,
+    nombre: string,
+    departamento: string,
+    perfilImage: string,
+    personaje: string,
+    popularidad: Float
+}
